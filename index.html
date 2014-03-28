@@ -6,13 +6,13 @@
         <title>Weather App</title>
 
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="initial-scale=1.0, width=device-width">
 
         <!-- Run in full-screen mode. -->
         <meta name="apple-mobile-web-app-capable" content="yes">
 
         <!-- Make the status bar black with white text. -->
-        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
         <!-- Customize home screen title. -->
         <meta name="apple-mobile-web-app-title" content="Web App">
@@ -61,17 +61,17 @@
 
         <div id="app">
           <div class="now">
-            <span class="place">New York, NY</span>
+            <span id="place">New York, NY</span>
             <div class="infos">
               <div class="infos-icon">
                 <div id="circles"></div>
-                <i class="icon-now wi-day-sunny"></i>
               </div>
               <div id="infos-temp"></div>
+              <div id="date-now">Monday, Today</div>
             </div>
-            
+
           </div>
-          <div class="forecast">
+          <div id="forecast">
             <ul>
               <li class="cf">
                 <span class="day">Tuesday</span>
@@ -101,7 +101,9 @@
         <script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
+        <script src="js/helvetica.font.js"></script>
         <script src="js/suncalc.js"></script>
+        <script src="js/moment.min.js"></script>
         <script src="js/main.js"></script>
     </body>
 </html>
