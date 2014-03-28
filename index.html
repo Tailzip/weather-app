@@ -54,39 +54,43 @@
         <style>html { -webkit-text-size-adjust: 100%; }</style>
 
         <link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="css/weather-icons.min.css">
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
 
         <div id="app">
           <div class="now">
-            <div id="drawing"></div>
             <span class="place">New York, NY</span>
             <div class="infos">
-              <div class="infos-icon"></div>
-              <p id="infos-temp">32<sup>°</sup></p>
+              <div class="infos-icon">
+                <div id="circles"></div>
+                <i class="icon-now wi-day-sunny"></i>
+              </div>
+              <div id="infos-temp"></div>
             </div>
+            
           </div>
           <div class="forecast">
             <ul>
               <li class="cf">
                 <span class="day">Tuesday</span>
-                <span class="icon"><i class="sunny"></i></span>
+                <span class="icon"><i class="wi-day-sunny"></i></span>
                 <span class="temp">10<sup>°</sup>- 30<sup>°</sup></span>
               </li>
               <li class="cf">
                 <span class="day">Wednesday</span>
-                <span class="icon"><i class="cloudy"></i></span>
+                <span class="icon"><i class="wi-cloudy"></i></span>
                 <span class="temp">10<sup>°</sup>- 30<sup>°</sup></span>
               </li>
               <li class="cf">
                 <span class="day">Thursday</span>
-                <span class="icon"><i class="rainy"></i></span>
+                <span class="icon"><i class="wi-rain"></i></span>
                 <span class="temp">10<sup>°</sup>- 30<sup>°</sup></span>
               </li>
               <li class="cf">
                 <span class="day">Friday</span>
-                <span class="icon"><i class="sunny"></i></span>
+                <span class="icon"><i class="wi-day-sunny"></i></span>
                 <span class="temp">10<sup>°</sup>- 30<sup>°</sup></span>
               </li>
             </ul>
@@ -96,11 +100,8 @@
 
         <script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.11.6/TweenMax.min.js"></script>
-        <script src="js/hammer.min.js"></script>
-        <script src="js/jquery.hammer.min.js"></script>
-        <script src="js/svg.min.js"></script>
-        <script src="js/svg.filter.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
+        <script src="js/suncalc.js"></script>
         <script src="js/main.js"></script>
     </body>
 </html>

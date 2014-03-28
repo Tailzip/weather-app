@@ -123,34 +123,52 @@ body {
 
 .infos {
     position: relative;
-    top:40%;
-    width:400px;
+    top: 220.5px;
+    width: 400px;
     margin: 0 auto;
 }
 
-#infos-temp {
+#circles {
+    position: relative;
+    z-index: 10;
+}
+
+
+.icon-circle {
+    width: 65px;
+    height: 65px;
+    border-radius: 40px;
+    font-size: 20px;
+    color: #fff;
+    line-height: 65px;
     text-align: center;
-    font-size: 200px;
-   /* text-shadow:rgba(234, 195, 104, .5) 1px 1px 0,
-    rgba(234, 195, 104, .49) 2px 2px 0,
-    rgba(234, 195, 104, .48) 3px 3px 0,
-    rgba(234, 195, 104, .47) 4px 4px 0,
-    rgba(234, 195, 104, .46) 5px 5px 0,
-    rgba(234, 195, 104, .45) 6px 6px 0,
-    rgba(234, 195, 104, .44) 7px 7px 0,
-    rgba(234, 195, 104, .43) 8px 8px 0,
-    rgba(234, 195, 104, .42) 9px 9px 0,
-    rgba(234, 195, 104, .41) 10px 10px 0,
-    rgba(234, 195, 104, .4) 11px 11px 0,
-    rgba(234, 195, 104, .39) 12px 12px 0,
-    rgba(234, 195, 104, .38) 13px 13px 0,
-    rgba(234, 195, 104, .37) 14px 14px 0,
-    rgba(234, 195, 104, .36) 15px 15px 0,
-    rgba(234, 195, 104, .35) 16px 16px 0,
-    rgba(234, 195, 104, .34) 17px 17px 0,
-    rgba(234, 195, 104, .33) 18px 18px 0,
-    rgba(234, 195, 104, .32) 19px 19px 0,
-    rgba(234, 195, 104, .31) 20px 20px 0;*/
+    background: #fdc400;
+    position: absolute;
+    top: 35px;
+    left: 35px;
+    z-index: 20;
+}
+
+.infos-icon {
+    width: 134px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.icon-now {
+    position: absolute;
+    top: 50px;
+    left: 56px;
+    font-size: 25px;
+    z-index: 50;
+}
+
+#infos-temp {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    margin: 0;
 }
 
 /* FORECAST */
@@ -195,7 +213,7 @@ body {
     font-size: 40px;
     line-height: 40px;
     width: 120px;
-    padding-left: 35px;
+    text-align: center;
 }
 
 .temp {
@@ -206,15 +224,6 @@ body {
     padding-right: 30px;
     padding-left: 40px;
 }
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,92 +1,142 @@
 (function(){
-    // if (window.navigator.standalone) {
+  // if (window.navigator.standalone) {
 
-        // $.ajax({
-        //       type: 'GET',
-        //       url: 'data.json',
-        //       success: function(data) {
-        //         console.log(data);
-        //       },
-        //       error: function() {
+      // $.ajax({
+      //       type: 'GET',
+      //       url: 'data.json',
+      //       success: function(data) {
+      //         console.log(data);
+      //       },
+      //       error: function() {
 
-        //       }
-        //     });
-        // var draw = SVG('drawing').size(640, 580);
-        // var text = draw.text('32°').fill('#FFF').move('40%',200)
-        // text.font({
-        //     family:   'Helvetica'
-        //   , size:     100
-        //   })
+      //       }
+      //     });
 
-        // text.filter(function(add) {
-        //   console.log(add);
-        //   var blur = add.offset(4, 4).gaussianBlur(1);
+    if (window.DeviceOrientationEvent) {
+        window.addEventListener("deviceorientation", function () {
+             //textShadow(convert(event.beta, event.gamma))
+        }, true);
+    }
 
-        //   add.blend(add.source, blur);
+    function convert(x, y){
+      angle = Math.atan2(x, y);
+          return (angle * 180/Math.PI);
+    }
 
-        //   // blur.animate(3000).move('150%', '150%');
-        // })
-        //
-        if (window.DeviceOrientationEvent) {
-            window.addEventListener("deviceorientation", function () {
-                console.log(event);
-                 textShadow(convert(event.beta, event.gamma))
-            }, true);
+    function calculateBoxShadow(angle, distance, r, g, b, opacity)
+    {
+      angle   = angle*((Math.PI)/180);
+      x       = Math.round(distance * Math.cos(angle));
+      y       = Math.round(distance * Math.sin(angle));
+      opacity = (opacity+15)/100;
+      colour  = 'rgba('+r+', '+g+', '+b+', '+opacity+')';
+      return  x +'px '+ y +'px '+ '0 '+ colour;
+    }
+
+    var shadow  = '';
+    var infoTemp = document.getElementById("infos-temp");
+    var infoIcon = document.getElementById("infos-icon");
+    var circles = document.getElementById("circles");
+
+    function textShadow(angle){
+      
+      shadow = "";
+      nbShadows = 15;
+      drop = true;
+
+      for(var i = nbShadows; i > 0; i--){
+        var px = ((parseInt(i)-parseInt(nbShadows))*-1)+1;
+        if(drop){
+          shadow = shadow + "drop-shadow(" + calculateBoxShadow(angle, px, 234, 195, 105, i) + ") ";
         }
-
-        function convert(x, y){
-          angle = Math.atan2(x, y);
-              return (angle * 180/Math.PI);
+        else{
+          shadow = shadow + calculateBoxShadow(angle, px, 234, 195, 105, i) + ", ";
         }
+        
+      }
 
-        function calculateBoxShadow(angle, distance, r, g, b, opacity)
-        {
-          angle   = angle*((Math.PI)/180);
-          x       = Math.round(distance * Math.cos(angle));
-          y       = Math.round(distance * Math.sin(angle));
-          opacity = opacity/100;
-          colour  = 'rgba('+r+', '+g+', '+b+', '+opacity+')';
-          return  x +'px '+ y +'px '+ '0 '+ colour;
-        }
+      if(!drop){
+        shadow = shadow.substr(0,shadow.length-2);
+        $("#infos-temp, #circles").css({"text-shadow" : shadow});
+      }
+      else{
+        $("#infos-temp, #circles").css({"-webkit-filter" : shadow});
+      }
 
-        var shadow2 = '';
-        var element = document.getElementById("infos-temp");
+      console.log(shadow);
 
-        function textShadow(angle){
-            shadow2 = "";
-          for(var i = 50; i > 0; i--){
-            var px = ((parseInt(i)-50)*-1)+1;
-            shadow2 = shadow2 + calculateBoxShadow(angle, px, 234, 195, 105, i) + ",";
-          }
+    }
 
-          shadow2 = shadow2.substr(0,shadow2.length-1);
+    textShadow(60);
+    //textShadow(infoIcon, 90);
 
-          TweenMax.to(element, 0, {
-              textShadow: shadow2
-          });
-
-        }
+    var times = SunCalc.getTimes(new Date(), 51.5, -0.1);
+    //console.log(times);
 
 
-        shadow2 = shadow2.substr(0,shadow2.length-1);
+    // Define Circle
+    var archtype = Raphael("circles", 134, 134);
+    var set = archtype.set();
+    
 
-      //   var shadow = '';
-      //   var orientation = "50px";
+    var paper = Raphael("infos-temp", 226, 110);
+    var t = paper.text(113, 50, "32°");
+    t.attr({ 
+      "font-size": 150, 
+      "font-family": "HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif", 
+      "fill": "#fff" });
 
-      //   for(var i = 50; i > 0; i--){
-      //     var px = ((parseInt(i)-50)*-1)+1;
-      //     if(i < 10){
-      //       shadow = shadow + "rgba(234, 195, 104, .0" + i +") "+ px +"px " + px + "px 0,"
-      //     }
-      //     else{
-      //       shadow = shadow + "rgba(234, 195, 104, ." + i +") "+ px +"px " + px + "px 0,"
-      //     }
-      //   }
-      // shadow = shadow.substr(0,shadow.length-1);
+    archtype.customAttributes.arc = function (xloc, yloc, value, total, R) {
+       var alpha = 360 / total * value,
+           a = (90 - alpha) * Math.PI / 180,
+           x = xloc + R * Math.cos(a),
+           y = yloc - R * Math.sin(a),
+           path;
+       if (total == value) {
+           path = [
+               ["M", xloc, yloc - R],
+               ["A", R, R, 0, 1, 1, xloc - 0.01, yloc - R]
+           ];
+       } else {
+           path = [
+               ["M", xloc, yloc - R],
+               ["A", R, R, 0, +(alpha > 180), 1, x, y]
+           ];
+       }
+       return {
+           path: path
+       };
+   };
 
+       function drawCircle() {
 
-      //   TweenMax.to(element, 0, {
-      //     textShadow: shadow2
-      // });
-    // }
+          archtype.circle(67, 67, 30).attr({
+               "stroke": "#fff",
+               "stroke-width": "7"
+           });
+
+          archtype.circle(67, 67, 26.8).attr({
+               "fill": "#fdc400",
+               "stroke-width": "0"
+           });
+
+          var line = archtype.path( ["M", 67, 3.5, "L", 67, 35 ] ).attr({
+               "stroke": "#fff",
+               "stroke-width": "7"
+           });
+
+           var my_arc = archtype.path().attr({
+              "stroke": "#fff",
+              "stroke-width": 7,
+              arc: [67, 67, 80, 100, 60]
+           });
+           /*my_arc.animate({
+               arc: [100, 100, 100, 100, 70]
+           }, 1000);*/
+
+       }
+
+       drawCircle();
+
+  // }
 })(jQuery);
