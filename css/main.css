@@ -1,0 +1,363 @@
+/*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
+
+html,
+button,
+input,
+select,
+textarea {
+    color: #222;
+}
+
+html {
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+audio,
+canvas,
+img,
+video {
+    vertical-align: middle;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+/* apply a natural box layout model to all elements */
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+ }
+
+.cf:before,
+.cf:after {
+    content: " ";
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+
+body {
+   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+   font-weight: 300;
+   color: #FFF;
+}
+
+#app {
+    height: 1136px;
+    width: 640px;
+    margin:100px auto;
+}
+
+/* NOW */
+
+
+
+.now {
+    height: 580px;
+    background: #fbd270;
+    position: relative;
+}
+
+#drawing {
+    height: 580px;
+    width: 640px;
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+}
+
+.place {
+    height: 63px;
+    width: 266px;
+    display: block;
+    background: #f26d6e;
+    -webkit-border-top-right-radius: 32px;
+    -webkit-border-bottom-right-radius: 32px;
+    border-top-right-radius: 32px;
+    border-bottom-right-radius: 32px;
+    font-size: 34px;
+    line-height: 63px;
+    padding-left: 30px;
+    top:20px;
+    position: absolute;
+}
+
+.infos {
+    position: relative;
+    top:40%;
+    width:400px;
+    margin: 0 auto;
+}
+
+#infos-temp {
+    text-align: center;
+    font-size: 200px;
+   /* text-shadow:rgba(234, 195, 104, .5) 1px 1px 0,
+    rgba(234, 195, 104, .49) 2px 2px 0,
+    rgba(234, 195, 104, .48) 3px 3px 0,
+    rgba(234, 195, 104, .47) 4px 4px 0,
+    rgba(234, 195, 104, .46) 5px 5px 0,
+    rgba(234, 195, 104, .45) 6px 6px 0,
+    rgba(234, 195, 104, .44) 7px 7px 0,
+    rgba(234, 195, 104, .43) 8px 8px 0,
+    rgba(234, 195, 104, .42) 9px 9px 0,
+    rgba(234, 195, 104, .41) 10px 10px 0,
+    rgba(234, 195, 104, .4) 11px 11px 0,
+    rgba(234, 195, 104, .39) 12px 12px 0,
+    rgba(234, 195, 104, .38) 13px 13px 0,
+    rgba(234, 195, 104, .37) 14px 14px 0,
+    rgba(234, 195, 104, .36) 15px 15px 0,
+    rgba(234, 195, 104, .35) 16px 16px 0,
+    rgba(234, 195, 104, .34) 17px 17px 0,
+    rgba(234, 195, 104, .33) 18px 18px 0,
+    rgba(234, 195, 104, .32) 19px 19px 0,
+    rgba(234, 195, 104, .31) 20px 20px 0;*/
+}
+
+/* FORECAST */
+
+.forecast {
+    height: 556px;
+    background: red;
+}
+
+.forecast ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.forecast ul li {
+    height: 139px;
+}
+
+.forecast ul li:nth-child(1) { background: #826b5b; }
+.forecast ul li:nth-child(2) { background: #bfa291; }
+.forecast ul li:nth-child(3) { background: #e0ccc0; }
+.forecast ul li:nth-child(4) { background: #ea988c; }
+
+.forecast span {
+    display: block;
+    float: left;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    height:100%;
+}
+
+.day {
+    font-size: 40px;
+    line-height: 40px;
+    width: 300px;
+    border-right: 2px solid rgba(255, 255, 255, .2);
+    padding-left: 35px;
+}
+
+.icon {
+    font-size: 40px;
+    line-height: 40px;
+    width: 120px;
+    padding-left: 35px;
+}
+
+.temp {
+    font-size: 42px;
+    line-height: 42px;
+    width: 220px;
+    border-left: 2px solid rgba(255, 255, 255, .2);
+    padding-right: 30px;
+    padding-left: 40px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+
+}
+
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    *text-indent: -9999px;
+}
+
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
+}
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+/* ==========================================================================
+   Print styles
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
