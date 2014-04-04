@@ -19,21 +19,21 @@
 				crossDomain: true,
 				url: 'http://api.wunderground.com/api/1a04ed21667647a0/geolookup/q/'+ pos.coords.latitude +','+ pos.coords.longitude +'.json',
 				success: function(data) {
-					console.log(data);
+					loc = data.location;
 					d = {
 						coords : {
 							lat : pos.coords.latitude,
 							lng : pos.coords.longitude
 						},
-						query : data.location.l,
-						place : data.location.state ? data.location.city + ", " + data.location.state : data.location.city + ", " + data.location.country
+						query : loc.l,
+						place : loc.state ? loc.city + ", " + loc.state : loc.city + ", " + loc.country
 					};
 
 				    	getForecast(d);
 
 				},
 				error: function() {
-
+					alert('Something went wrong...');
 				}
 			});
 		}
@@ -48,7 +48,7 @@
 					setupApp(data.forecast.simpleforecast, d);
 				},
 				error: function() {
-
+					alert('Something went wrong...');
 				}
 			});
 	      }
@@ -73,6 +73,7 @@
 			console.log("Now From Dawn : " + nowFromDawn);
 			console.log("Dawn Till Dusk : " + dawnTillDusk);
 			console.log("Now % : " + now);
+			console.log("Sun Pos : " + sunPos);
 
 			var data = {
 				day : moment(date).format("dddd, MMMM Do YYYY"),
@@ -110,10 +111,10 @@
 			}, true);
 		}
 
-		var convert = function(x, y){
+		/*var convert = function(x, y){
 			angle = Math.atan2(x, y);
 			return (angle * 180/Math.PI);
-		}
+		}*/
 
 		var calculateBoxShadow = function(angle, distance, r, g, b, opacity){
 			angle   	= angle*((Math.PI)/180);
@@ -353,7 +354,7 @@
 				"stroke": "#fff"
 			});
 
-			var t = archtype.text(86, 86, data.icon).attr({
+			var t = archtype.text(85, 85, data.icon).attr({
 				"font-family" : "weather",
 				"font-size": 0,
 				"fill" : "#fff"
